@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-style: italic;
 }
 body{
   background-color:whitesmoke;
@@ -11,7 +12,6 @@ header{
   background-color: rgb(0, 0, 0);
   color: white;
   font-size: x-large;
-  
   padding: 30px;
 }
 iframe {
@@ -19,5 +19,12 @@ iframe {
 }
 style {
 	text-align: center;
-
+}
+.navbar{
+  text-align: center;
+}
+.navbar a{
+  color: antiquewhite;
+  padding-left: 20px;
+  text-decoration: none;
 }
