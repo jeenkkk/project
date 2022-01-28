@@ -1,3 +1,7 @@
+@font-face {
+  font-family: Cardo;
+  src: url(Cardo-Regular.ttf);
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -26,6 +30,7 @@ style {
 }
 .navbar a{
   color: rgb(22, 13, 0);
+  font-family: Cardo;
   padding: 30px;
   text-decoration: none;
 }
