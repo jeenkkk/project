@@ -5,7 +5,7 @@
 }
 body{
   background-color:#06273a;
-  
+  font-family: "Cardo";
 }
 header{
   background-color: rgb(255, 255, 255);
@@ -13,7 +13,7 @@ header{
   font-size: x-large;
 }
 
-
+/*navbar*/
 .navbar{
   text-align: right;
   background-color: #e7dec8;
@@ -34,16 +34,7 @@ header{
   background-color: #cbaf87;
 }
 
-
-
-/***smaller br***/
-br {
-  display: block;
-  margin: 8px;
-  line-height:2px;
-  content: " ";
-/*solution from https://stackoverflow.com/questions/1409649/how-to-change-the-height-of-a-br */
-}
+/*logo*/
 .logo{
   font-size: 1.6em;
   text-align: left;
@@ -59,6 +50,10 @@ br {
 .logo a img{
   position: relative;
 }
+.logo a.active{
+  color: #002a4a;
+  animation: pulse 1.5s ease infinite;
+}
 .logo h1{
   font-family: 'El Messiri';
 }
@@ -66,6 +61,8 @@ br {
   padding-top: 10px;
   position: absolute; /*img in front of text*/
 }
+
+
 /*****************************fade animation**************************/
 .fade{
   font-family: angelica;
@@ -83,9 +80,13 @@ br {
 	font-family: 'Roboto', sans-serif;;
 	color: #FFF;
 }
-#right {
-  text-align: right;
-  background-color: black;
+
+
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.2);}
+  100% {transform: scale(1);}
+  
 }
 @keyframes animate {
   0% {

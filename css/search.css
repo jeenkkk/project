@@ -1,0 +1,10 @@
+.search{
+    text-align: center;
+}
+.searchtb{
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid;
+    text-align: center;
+    background-color: aliceblue;
+}

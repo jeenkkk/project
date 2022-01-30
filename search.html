@@ -5,9 +5,11 @@
         <title>Shopflex</title>
         <link href='https://fonts.googleapis.com/css?family=El Messiri' rel='stylesheet'> <!--logo font-->
         <link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'> <!--home login nav font-->
+        <link href='https://fonts.googleapis.com/css?family=Cardo' rel='stylesheet'> <!--article-->
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/search.css">
     </head>
-    <body>
+    <body style="background-color: #fffef8;">
         <header>
         
         <nav class="logo">
@@ -16,13 +18,22 @@
             <a href="login.html" style="float: right;"> LOGIN &nbsp;<img src="pic/login.png" alt="log" width="33"></a></h1>
         </nav>
         <nav class="navbar">
-            <a class="active" href="index.html">HOME</a>
+            <a href="index.html">HOME</a>
             <a href="newcollect.html">NEW COLLECTION</a>
             <a href="shop.html">SHOP</a>
-            <a href="search.html">SEARCH</a>
+            <a class="active" href="search.html">SEARCH</a>
             <a href="aboutus.html">ABOUT US</a>
         </nav>
         </header>
+        <br>
+        <nav class="search">
+            <input type="text" size="100px" onkeyup="tablesearch" placeholder="Search...">
+            <table class="searchtb">
+                <tr class="head">
+                    <th>Name</th>
+                </tr>
+            </table>
+        </nav>
         
     </body>
 </html>
