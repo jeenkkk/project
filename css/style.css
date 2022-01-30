@@ -4,52 +4,88 @@
   padding: 0;
 }
 body{
-  background-color:rgba(245, 245, 245, 0.658);
-  text-align: center;
+  background-color:#06273a;
+  
 }
-
 header{
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   font-size: x-large;
-  padding: 30px;
 }
-iframe {
-	text-align: center;
-}
-style {
-	text-align: center;
-}
+
+
 .navbar{
-  text-align: center;
-  
+  text-align: right;
+  background-color: #e7dec8;
+  padding: 4px;
+  padding-right: 40px;
 }
 .navbar a{
   color: rgb(22, 13, 0);
-  padding: 30px;
+  padding-left: 8px;
+  padding-right: 8px;
   text-decoration: none;
+  font-size: 18px;
 }
 .navbar .active,.navbar a:hover{
   color: rgb(22, 13, 0);
+  padding-top: 9px;
+  padding-bottom: 5px;
+  background-color: #cbaf87;
+}
+
+
+
+/***smaller br***/
+br {
+  display: block;
+  margin: 8px;
+  line-height:2px;
+  content: " ";
+/*solution from https://stackoverflow.com/questions/1409649/how-to-change-the-height-of-a-br */
+}
+.logo{
+  font-size: 1.6em;
+  text-align: left;
+}
+.logo a{
+  color: #002a4a;
+  font-size: 25px;
+  padding-top: 20px;
+  padding-right: 15px;
   text-decoration: none;
-  background-color: rgb(186, 197, 138);
+  font-family: 'Cormorant Garamond';
+}
+.logo a img{
+  position: relative;
+}
+.logo h1{
+  font-family: 'El Messiri';
+}
+.logo img{
+  padding-top: 10px;
+  position: absolute; /*img in front of text*/
 }
 /*****************************fade animation**************************/
 .fade{
+  font-family: angelica;
   position: relative;
 	text-transform: uppercase;
-	font-size: 3em;
+	font-size: 1.3em;
 	letter-spacing: 5px;
 	overflow: hidden;
-	background: linear-gradient(90deg, #000, #fff, #000);
+	background: linear-gradient(90deg, #002a4a, #fff, #cbaf87);
 	background-repeat: no-repeat;
 	background-size: 80%;
 	animation: animate 3s linear infinite;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: rgba(255, 255, 255, 0);
-	text-align: center;
 	font-family: 'Roboto', sans-serif;;
 	color: #FFF;
+}
+#right {
+  text-align: right;
+  background-color: black;
 }
 @keyframes animate {
   0% {
