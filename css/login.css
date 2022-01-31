@@ -1,0 +1,44 @@
+
+article{
+    margin: 50px 30% 50px 30%;
+    border-radius: 7px;
+    background-color: white;
+    padding:50px;
+}
+
+article h2 {
+    letter-spacing: 2px;
+    font-family: 'Cormorant Garamond';
+    color: black;
+    padding: 50px;
+    margin-bottom: 0px;
+    text-align: Center;
+}
+
+.login-form{
+    align-self: flex-start;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+.form-control{
+    font-family: 'Cormorant Garamond';
+    border: none;
+    border-bottom: 1px solid #3a3a3a;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.btn{
+    font-family: 'Cormorant Garamond';
+    margin: 10px;
+    padding: 7px 65px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #cbaf87;
+    border: none;
+}
+
+.btn:hover{
+    background-color: #cbaf879d;
+}
