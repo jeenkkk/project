@@ -16,27 +16,48 @@ article h2 {
 }
 
 .login-form{
-    align-self: flex-start;
-    display: grid;
-    align-items: center;
-    justify-items: center;
+    font-family: 'Cormorant Garamond';
+    font-weight: bold;
+    text-align: center;
 }
-.form-control{
+.login-form img{
+    padding-bottom: 50px;
+    position: relative;
+}
+.login-form a{
+    text-decoration: none;
+}
+
+input[type=text], input[type=password]{
+    
     font-family: 'Cormorant Garamond';
     border: none;
     border-bottom: 1px solid #3a3a3a;
     margin-bottom: 20px;
     outline: none;
+    font-weight: bold;
+    width: 50%;
+    padding: 7px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+#txtFname,#txtLname{
+    width: 23.5%;
+}
+
+input[type=checkbox]{
+    margin: 5px 0px;
+    padding: 10px 20px;
 }
 
 .btn{
     font-family: 'Cormorant Garamond';
     margin: 10px;
-    padding: 7px 65px;
-    text-align: center;
+    padding: 10px 65px;
     border-radius: 5px;
     background-color: #cbaf87;
     border: none;
+    font-weight: bold;
 }
 
 .btn:hover{

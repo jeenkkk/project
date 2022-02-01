@@ -26,11 +26,13 @@
         </header>
         <article>
             <h2>LOG&nbsp;IN</h2>
-            <form class="login-form">
-                <input type="text" id="txtLogin" placeholder="Username/Email" class="form-control" required>
-                <input type="password"id = "txtPwd" placeholder="Password" class="form-control" required>
-                <button type="submit" class="btn">LOG&nbsp;IN</button>
-                <br>
+            <form class="login-form" action="index.html" method="post">
+                <img src="pic/login.png" alt="log" width="100"><br>
+                <input type="text" id="txtLogin" placeholder="Username/Email" class="form-control" required title="Please enter your username or email address"><br>
+                <input type="password"id = "txtPwd" placeholder="Password" class="form-control" required title="Please enter your password" ><br>
+                <input type="checkbox"id = "remember" class="form-control">
+                <label for="remember">Remember me</label><br>
+                <button type="submit" class="btn">LOG&nbsp;IN</button><br>
                 <a href="register.html">Register</a>
             </form>
         </article>
