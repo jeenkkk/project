@@ -8,6 +8,7 @@
         <link href='https://fonts.googleapis.com/css?family=Cardo' rel='stylesheet'> <!--article-->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/search.css">
+        <script type="text/javascript" src="js/search.js"></script>
     </head>
     <body style="background-color: #fffef8;">
         <header>
@@ -19,7 +20,6 @@
         </nav>
         <nav class="navbar">
             <a href="index.html">HOME</a>
-            <a href="newcollect.html">NEW COLLECTION</a>
             <a href="shop.html">SHOP</a>
             <a class="active" href="search.html">SEARCH</a>
             <a href="aboutus.html">ABOUT US</a>
@@ -27,10 +27,35 @@
         </header>
         <br>
         <nav class="search">
-            <input type="text" size="100px" onkeyup="tablesearch" placeholder="Search...">
-            <table class="searchtb">
-                <tr class="head">
-                    <th>Name</th>
+            <input type="text" id="inp" size="100px" onkeyup="searchbyhide()" placeholder="Search...">
+            <table class="searchtb" id="tb">
+                <tr>
+                    <th style="width: 70%;">Name</th>
+                    <th style="width: 30%;">Price</th>
+                </tr>
+                <tr>
+                    <td>
+                        Hawaii Shirt
+                    </td>
+                    <td>
+                        230 ฿
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Dog Shirt
+                    </td>
+                    <td>
+                        1000 ฿
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Bobo Shirt
+                    </td>
+                    <td>
+                        120 ฿
+                    </td>
                 </tr>
             </table>
         </nav>

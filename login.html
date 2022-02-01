@@ -15,15 +15,26 @@
         <nav class="logo">
             <h1 style="color: #30475e;">&nbsp;
                 <img src="pic/logo.v4.png" alt="logo" width="60"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOP<font color="#cbaf87">FLAX</font>
-            <a class="active" href="login.html" style="float: right;"> LOGIN &nbsp;<img src="pic/login.png" alt="log" width="33"></a></h1>
+            <a href="login.html" style="float: right;"> LOGIN &nbsp;<img src="pic/login.png" alt="log" width="33"></a></h1>
         </nav>
         <nav class="navbar">
             <a href="index.html">HOME</a>
-            <a href="newcollect.html">NEW COLLECTION</a>
             <a href="shop.html">SHOP</a>
             <a href="search.html">SEARCH</a>
             <a href="aboutus.html">ABOUT US</a>
         </nav>
         </header>
+        <article>
+            <h2>LOGIN</h2>
+            <form class="login-form" action="index.html" method="post">
+                <img src="pic/login.png" alt="log" width="100"><br>
+                <input type="text" id="txtLogin" placeholder="Username/Email" class="form-control" required title="Please enter your username or email address"><br>
+                <input type="password"id = "txtPwd" placeholder="Password" class="form-control" required title="Please enter your password" ><br>
+                <input type="checkbox"id = "remember" class="form-control">
+                <label for="remember">Remember me</label><br>
+                <button type="submit" class="btn">LOGIN</button><br>
+                <a href="register.html">Register</a>
+            </form>
+        </article>
     </body>
 </html>

@@ -2,9 +2,18 @@
     text-align: center;
 }
 .searchtb{
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid;
+    border-radius: 10px;
+    width: 80%;
     text-align: center;
-    background-color: aliceblue;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #8e8379;
+    margin-top: 10px;
+}
+.searchtb td{
+    border-radius: 10px;
+    background-color: #e7ded9;
+}
+.searchtb td:hover{
+    background-color: rgb(255, 235, 204);
 }
