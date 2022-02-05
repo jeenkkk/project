@@ -75,9 +75,16 @@
     color: rgb(238, 238, 238);
     border-radius: 15px;
 }
-.bottompic{
+.bottompic img{
     width: 100%;
-    border: 0;
+    margin: auto;
+    height: auto;
+}
+.bottompic img:hover{
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 2s;
+    animation-name: fade;
+    animation-duration: 2s;
 }
 .copyright{
     font-family: "Cardo";
@@ -85,3 +92,20 @@
     background-color: #8d8d8d;
     color: rgb(238, 238, 238);
 }
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.6s;
+    animation-name: fade;
+    animation-duration: 1.6s;
+  }
+  
+  @-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }

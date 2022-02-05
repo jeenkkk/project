@@ -16,7 +16,9 @@ header{
     width: 100%;
     height: 100%;
     background-image: url("/pic/productpic/messageImage_1643955755291.jpeg");
+    background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
     position: absolute;
     z-index: -1;
     top: 0;

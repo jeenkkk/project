@@ -35,9 +35,11 @@ input[type=text]:focus {
     margin-right: auto;
     background-color: #8e8379;
     margin-top: 10px;
+    padding: 3px;
     
 }
 .searchtb td{
+    padding: 4px;
     border-radius: 10px;
     background-color: #e7ded9;
 }
