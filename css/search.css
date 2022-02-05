@@ -1,3 +1,29 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    background-color:#06273a;
+    font-family: "Cardo";
+  }
+  header{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: x-large;
+  }
+input[type=text]{
+    width: 130px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 40px;
+    transition: width 0.5s ease-in-out;
+}
+input[type=text]:focus {
+    width: 80%;
+}
 .search{
     text-align: center;
 }
@@ -9,10 +35,15 @@
     margin-right: auto;
     background-color: #8e8379;
     margin-top: 10px;
+    
 }
 .searchtb td{
     border-radius: 10px;
     background-color: #e7ded9;
+}
+.searchtb td a{
+    color: rgb(88, 0, 0);
+    text-decoration: none;
 }
 .searchtb td:hover{
     background-color: rgb(255, 235, 204);

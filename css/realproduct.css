@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    background-color:#06273a;
+    font-family: "Cardo";
+  }
+  header{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: x-large;
+  }
+article{
+    margin: 50px 10% 50px 10%;
+    background-color: white;
+    padding:50px;
+    display: flex;
+}
+.imgcontainer {
+    width: 55%;
+    position: relative;
+}
+.imgcontainer img{
+    width: 95%;
+    position: relative;
+}
+
+.img-list img{
+    width: 47%;
+}
+
+
+.Pinfo {
+    font-family: 'Cardo';
+    width: 45%;
+    position: relative;
+    text-align: left;
+    line-height: 1.6;
+    color: rgb(133, 133, 133);
+    margin-top: 50px;
+    margin-left: 50px;
+
+}
+.Pinfo a{
+    color: rgb(133, 133, 133);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.Pinfo h2,h4 {
+    font-family: 'Cardo';
+    letter-spacing: 1px;
+    color: rgb(0, 0, 0);
+}
+
+.Pinfo .Pricetag{
+    font-family: 'KoHo';
+    font-size: xx-large;
+    font-weight: 100;
+    color: rgb(0, 0, 0);
+}
+input[type=number] {
+    font-family: 'Cardo';
+    margin: 10px;
+    width: 50px;
+    padding: 8px 0px;
+    text-align: center;
+}
+select {
+    font-family: 'Cardo';
+    text-transform: uppercase;
+    width: auto;
+    padding: 8px 0px;
+    text-align: left;
+}
+
+button {
+    font-family: 'Cormorant Garamond';
+    letter-spacing: 2px;
+    margin: 10px;
+    padding: 10px 65px;
+    border-radius: 5px;
+    background-color: #cbaf87;
+    border: none;
+    font-weight: bold;
+}
+
+.addtobag button:hover{
+    background-color: #cbaf879d;
+}

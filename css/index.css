@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body{
+    background-color:#06273a;
+    font-family: "Cardo";
+  }
+  header{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: x-large;
+  }
+#slider{
+    width:80%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    position:relative;
+    overflow:hidden;
+    box-shadow: 5px 8px 5px rgb(14, 14, 14);
+}
+  
+.slide{
+    width:100%;
+    display:none;
+    animation-name:fade;
+    animation-duration:2s; 
+}
+.slide img{
+   width:100%; 
+   
+}
+  
+.controls{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:1.5em;
+    padding:15px 10px;
+    border-radius:5px;
+}
+  
+.controls:hover{
+    background:white;
+    transition:0.4s;
+}
+  
+.controls:active{
+    color:grey;
+}
+  
+#left-arrow{
+    left:10px;
+}
+  
+#right-arrow{
+    right:10px;
+}
+@media (max-width:576px){
+    #slider{width:100%;
+}
+.controls{
+    font-size:1em;
+}
+}
+.quote{
+    text-align: center;
+    font-family: "Cardo";
+    font-size: 1.5em;
+    background-color: #586b81;
+    margin: 20px;
+    padding: 20px;
+    color: rgb(238, 238, 238);
+    border-radius: 15px;
+}
+.bottompic{
+    width: 100%;
+    border: 0;
+}
+.copyright{
+    font-family: "Cardo";
+    font-size: 1.2em;
+    background-color: #8d8d8d;
+    color: rgb(238, 238, 238);
+}
