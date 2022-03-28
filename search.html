@@ -28,53 +28,22 @@
         </header>
         <br>
         <nav class="search">
-            <input type="text" id="inp" size="100px" onkeyup="searchbyhide()" placeholder="Search...">
-            <table class="searchtb" id="tb">
-                <tr>
-                    <th style="width: 70%;">Name</th>
-                    <th style="width: 30%;">Price</th>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="product/Products/Perfume/cocom.html">COCO MADEMOISELLE, 50ML</a> 
-                    </td>
-                    <td>
-                        ฿5100.00
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="product/Products/Shoe/ankleboot.html">D-LEADER ANKLE BOOT</a> 
-                    </td>
-                    <td>
-                        ฿70000.00
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="product/Products/Watch/J12.html">J12 CALIBER 12.2 EDITION 1 WATCH, 33 MM</a>
-                    </td>
-                    <td>
-                        ฿295000.00
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="product/Products/Skincare/Rouge.html">ROUGE DIOR - NEW LOOK LIMITED EDITION</a>
-                    </td>
-                    <td>
-                        ฿1830.00
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="product/Products/HandBag/dlite.html">MEDIUM LADY D-LITE BAG</a>
-                    </td>
-                    <td>
-                        ฿170000.00
-                    </td>
-                </tr>
-            </table>
+            Name : <input type="text" id="searchname" size="1000px" placeholder="Product name...">
+            <br>
+            <br>
+            Price : <input type="text" id="minprice" size="1000px" placeholder="Minimum price...">
+            <input type="text" id="maxprice" size="1000px" placeholder="Maximum price...">
+            <br>
+            <br>
+            Type : <select id="searchtype">
+                <option value="all">All</option>
+                <option value="perfume">Perfume</option>
+                <option value="lipstick">Lipstick</option>
+                <option value="watch">Watch</option>
+                <option value="shoe">Shoe</option>
+                <option value="bag">Bag</option>
+            </select>
+            <button type="submit" id="searching">Search</button>
         </nav>
         
     </body>

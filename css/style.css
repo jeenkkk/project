@@ -46,10 +46,6 @@ header{
 .logo a img{
   position: relative;
 }
-.logo a.active{
-  color: #002a4a;
-  animation: pulse 1.5s ease infinite;
-}
 .logo h1{
   font-family: 'El Messiri';
 }
