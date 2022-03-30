@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '/')));
 app.set('SEC3', 'ejs');
+
 var connection = mysql.createConnection({
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USERNAME,
@@ -106,7 +107,6 @@ app.put('/personal_info', (req, res) => {
 
 /************************************************************ CRUD **********************************************************/
 console.log("Hello");
-
 const router = express.Router();
 app.use("/", router); // Register the router
 
@@ -134,17 +134,24 @@ router.get("/succ.html", function(req, res) {
 
 });
 router.post("/succ.html", function(req, res) {
-    const fname = req.body.Firstname;
-    const lname = req.body.Lastname;
-    const uname = req.body.Username;
-    const email = req.body.email;
-    const password = req.body.Password;
-    console.log(`Form submitted by ${fname} ${lname} with ${req.method}`);
-    const insert = ("INSERT INTO user_info(Firstname,Lastname,Username,Password,email,role) VALUES ('" + fname + "','" + lname + "','" + uname + "','" + password + "','" + email + "','user')");
-    connection.query(insert, function(error, results) {
-        if (error) throw error;
-        return res.sendFile(path.join(__dirname + '/succ.html'));
-    });
+    const user = req.body;
+
+    connection.query('SELECT email FROM User_info WHERE email = ?', user.email, (error, results, fields) => {
+        if (typeof results[0] !== 'undefined') {
+            if (results[0].email == user.email) {
+                console.log(`Email: ${user.email} is already registered`);
+                res.sendFile(path.join(__dirname + '/register.html'));
+            }
+        } else {
+            const insert = ("INSERT INTO user_info(Firstname,Lastname,Username,Password,email,role) VALUES (?,?,?,?,?,?)");
+            connection.query(insert, [user.Firstname, user.Lastname, user.Username, user.Password, user.email, "user"], function(error, results) {
+                if (error) throw error;
+                console.log(`Form submitted by ${user.Firstname} ${user.Lastname} with ${req.method}`);
+                return res.sendFile(path.join(__dirname + '/succ.html'));
+            });
+        }
+
+    })
 
 });
 router.get("/search.html", function(req, res) {
