@@ -10,102 +10,102 @@ const dbConnection = require('./db.js');
 const app = express();
 const path = require("path");
 const bodyParser = require('body-parser');
-const {body, validationResult} = require('express-validator');
+const { body, validationResult } = require('express-validator');
 
 /************************************************************ CRUD **********************************************************/
-dotenv.config({ path: path.join(__dirname, './.env')})
+dotenv.config({ path: path.join(__dirname, './.env') })
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '/')));
 app.set('SEC3', 'ejs');
 var connection = mysql.createConnection({
-    host     : process.env.MYSQL_HOST,
-    user     : process.env.MYSQL_USERNAME,
-    password : process.env.MYSQL_PASSWORD,
-    database : process.env.MYSQL_DATABASE,
-    port    : process.env.PORT
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USERNAME,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    port: process.env.PORT
 });
 
-connection.connect((err)=>{ 
+connection.connect((err) => {
     if (err) {
         console.error('error connecting: ' + err.stack);
         return;
     }
-    console.log("Connected DB: "+process.env.MYSQL_DATABASE);
+    console.log("Connected DB: " + process.env.MYSQL_DATABASE);
 });
 
-app.listen(3030,()=>{ console.log("Express server is running at port no: 3030")});
+app.listen(3030, () => { console.log("Express server is running at port no: 3030") });
 
-app.get('/User_info',(req,res)=>{
-    connection.query('SELECT * FROM User_info',(error, results, fields)=> {
-        if (!error){
+app.get('/User_info', (req, res) => {
+    connection.query('SELECT * FROM User_info', (error, results, fields) => {
+        if (!error) {
             res.send(results);
-        } else{
+        } else {
             res.send(error);
         }
-        
-        })
-    });
-app.get('/User_info/:id',(req,res)=>{
+
+    })
+});
+app.get('/User_info/:id', (req, res) => {
     let id = req.params.id;
     if (!id) {
         return res.status(400).send({ error: true, message: 'Please provide student id.' });
     }
-    connection.query('SELECT * FROM User_info WHERE id = ?', id, (error, results, fields)=>{
-        if (!error){
+    connection.query('SELECT * FROM User_info WHERE id = ?', id, (error, results, fields) => {
+        if (!error) {
             res.send(results);
-        } else{
+        } else {
             res.send(error);
         }
-        
-        })
-    });
+
+    })
+});
 
 //delete
-app.delete('/personal_info/:id',(req,res)=>{
+app.delete('/personal_info/:id', (req, res) => {
     let student_id = req.params.id;
     if (!student_id) {
         return res.status(400).send({ error: true, message: 'Please provide student id.' });
     }
-    connection.query('DELETE FROM personal_info WHERE StudentID = ?', student_id, (error, results, fields)=>{
-        if (!error){
+    connection.query('DELETE FROM personal_info WHERE StudentID = ?', student_id, (error, results, fields) => {
+        if (!error) {
             res.send("User already deleted");
-        } else{
+        } else {
             res.send(error);
         }
-        
-        })
-    });
+
+    })
+});
 
 //insert
-app.post('/personal_info',(req,res)=>{
+app.post('/personal_info', (req, res) => {
     let Student = req.body;
     let sql = "INSERT INTO personal_info (StudentID,Firstname,Lastname,DOB,Mobilephone) VALUES (?, ?, ?, ?, ?)"
-    connection.query(sql, [Student.StudentID,Student.Firstname,Student.Lastname,Student.DOB,Student.Mobilephone], (error, results, fields)=>{
-        if (!error){
+    connection.query(sql, [Student.StudentID, Student.Firstname, Student.Lastname, Student.DOB, Student.Mobilephone], (error, results, fields) => {
+        if (!error) {
             res.send("User already added");
-        } else{
+        } else {
             res.send(error);
         }
-        
-        })
-    });
+
+    })
+});
 
 //update
-app.put('/personal_info',(req,res)=>{
+app.put('/personal_info', (req, res) => {
     let Student = req.body;
     let sql = "UPDATE personal_info SET Firstname = ?, Lastname = ?, DOB = ?, Mobilephone = ? WHERE StudentID = ?"
-    connection.query(sql, [Student.Firstname,Student.Lastname,Student.DOB,Student.Mobilephone,Student.StudentID], (error, results, fields)=>{
-        if (!error){
+    connection.query(sql, [Student.Firstname, Student.Lastname, Student.DOB, Student.Mobilephone, Student.StudentID], (error, results, fields) => {
+        if (!error) {
             res.send("User already updated");
-        } else{
+        } else {
             res.send(error);
         }
-        })
+    })
 });
 
 /************************************************************ CRUD **********************************************************/
-
+console.log("Hello");
 
 const router = express.Router();
 app.use("/", router); // Register the router
@@ -113,39 +113,61 @@ app.use("/", router); // Register the router
 router.use(express.json());
 router.use(express.urlencoded({ extended: true }));
 
-router.get("/",function(req,res){
+router.get("/", function(req, res) {
     console.log("Home page");
-    res.sendFile(path.join(__dirname+'/index.html')); 
+    res.sendFile(path.join(__dirname + '/index.html'));
 });
-router.get("/index.html",function(req,res){
+router.get("/index.html", function(req, res) {
     console.log("Home page");
-    res.sendFile(path.join(__dirname+'/index.html')); 
+    res.sendFile(path.join(__dirname + '/index.html'));
 });
-router.get("/login.html",function(req,res){
+router.get("/login.html", function(req, res) {
     console.log("login page");
-    res.sendFile(path.join(__dirname+'/login.html')); 
+    res.sendFile(path.join(__dirname + '/login.html'));
 });
-router.get("/register.html",function(req,res){
+router.get("/register.html", function(req, res) {
     console.log("register page");
-    res.sendFile(path.join(__dirname+'/register.html')); 
+    res.sendFile(path.join(__dirname + '/register.html'));
 });
-router.get("/search.html",function(req,res){
+router.get("/succ.html", function(req, res) {
+    console.log("register successful");
+
+});
+router.post("/succ.html", function(req, res) {
+    console.log(req.body); // JSON
+    const fname = req.body.Firstname;
+    const lname = req.body.Lastname;
+    const uname = req.body.Username;
+    const email = req.body.email;
+    const password = req.body.Password;
+    console.log(`Form submitted by ${fname} ${lname} with ${req.method}`);
+    const insert = ("INSERT INTO user_info(Firstname,Lastname,Username,Password,email,role) VALUES ('" + fname + "','" + lname + "','" + uname + "','" + password + "','" + email + "','user')");
+    connection.query(insert, function(error, results) {
+        if (error) throw error;
+        return res.sendFile(path.join(__dirname + '/succ.html'));
+    });
+
+});
+router.get("/search.html", function(req, res) {
     console.log("search page");
-    res.sendFile(path.join(__dirname+'/search.html')); 
+    res.sendFile(path.join(__dirname + '/search.html'));
 });
-router.get("/shop.html",function(req,res){
+router.get("/shop.html", function(req, res) {
     console.log("shop page");
-    res.sendFile(path.join(__dirname+'/shop.html')); 
+    res.sendFile(path.join(__dirname + '/shop.html'));
 });
-router.get("/aboutus.html",function(req,res){
+router.get("/aboutus.html", function(req, res) {
     console.log("about us page");
-    res.sendFile(path.join(__dirname+'/aboutus.html')); 
+    res.sendFile(path.join(__dirname + '/aboutus.html'));
 });
-router.post("/form-post",function(req,res){
+router.post("/form-post", function(req, res) {
     const name = req.body.name;
     const email = req.body.email;
     const message = req.body.messages;
-    console.log("Form submitted by "+name);
-    res.send('Greeting <tag style="background-color: cornflowerblue;">'+name+'</tag> '+'The following message has been received: <tag style="background-color: orange;">'+message+'</tag>'+'.'+'We will contact you via <tag style="background-color: darkseagreen;">'+email+'</tag>');
+    console.log("Form submitted by " + name);
+    res.send('Greeting <tag style="background-color: cornflowerblue;">' + name + '</tag> ' + 'The following message has been received: <tag style="background-color: orange;">' + message + '</tag>' + '.' + 'We will contact you via <tag style="background-color: darkseagreen;">' + email + '</tag>');
 });
-
+app.use((req, res, next) => { //PAGE NOT FOUND
+    console.log("404: Invalid accessed");
+    res.status(404).sendFile(path.join(__dirname + '/404.html'));
+});
