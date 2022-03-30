@@ -134,7 +134,6 @@ router.get("/succ.html", function(req, res) {
 
 });
 router.post("/succ.html", function(req, res) {
-    console.log(req.body); // JSON
     const fname = req.body.Firstname;
     const lname = req.body.Lastname;
     const uname = req.body.Username;
