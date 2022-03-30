@@ -9,14 +9,14 @@ CREATE TABLE `User_info` (
   `Username` varchar(20) NOT NULL,
   `Password` varchar(20) NOT NULL,
   `email`	varchar(100) NOT NULL,
-  `role` varchar(20) NOT NULL
+  `role` varchar(20) NOT NULL,
   PRIMARY KEY (`Username`)
 );
 
 DROP TABLE IF EXISTS `Login_info`;
 CREATE TABLE `Login_info` (
   `Username` varchar(20) NOT NULL,
-  `Login_log` DATETIME
+  `Login_log` DATETIME,
   constraint fk_username foreign key (Username) references User_info(Username),
   PRIMARY KEY (`Username`,`Login_log`)
 );
@@ -29,9 +29,9 @@ CREATE TABLE `Product_info` (
   `Product_ID` int(11) NOT NULL,
   `Product_Name` varchar(50) NOT NULL,
   `Product_Price` int(11) NOT NULL,
-  `Product_Quantity` int(11) NOT NULL,
-  `Product_Description` varchar(100) NOT NULL,
-  `Product_Image` varchar(100) NOT NULL,
+  `Product_Quantity` int(11) DEFAULT '1' NOT NULL,
+  `Product_Description` varchar(256) NOT NULL,
+  `Product_Image` varchar(256) NOT NULL,
   `Product_Category` varchar(20) NOT NULL
 
 );
