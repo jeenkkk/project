@@ -125,21 +125,55 @@ router.get("/login.html", function(req, res) {
     console.log("login page");
     res.sendFile(path.join(__dirname + '/login.html'));
 });
+router.post("/index.html", function(req, res) { //login form submit
+    const user = req.body;
+    console.log(user);
+    connection.query('SELECT Username,email,Password FROM User_info WHERE Username = ?', user.Username, (error, results, fields) => {
+        if (typeof results[0] !== 'undefined') {
+            if (results[0].Username == user.Username && results[0].Password == user.Password) {
+                connection.query('INSERT INTO login_info(Username,Login_log) VALUE(?,NOW())', results[0].Username, (error, results, fields) => {
+                    if (error) throw error;
+                    console.log(`User: ${user.Username} Logged in`);
+                    res.sendFile(path.join(__dirname + '/index.html'));
+                })
+            } else {
+                console.log(`Wrong Username or Password`);
+            }
+        } else {
+            connection.query('SELECT Username,email,Password FROM User_info WHERE email = ?', user.Username, (error, results, fields) => {
+                if (typeof results[0] !== 'undefined') {
+                    console.log(results[0]);
+                    const username = results[0].Username;
+                    if (results[0].email == user.Username && results[0].Password == user.Password) {
+                        connection.query('INSERT INTO login_info(Username,Login_log) VALUE(?,NOW())', results[0].Username, (error, results, fields) => {
+                            if (error) throw error;
+                            console.log(`User: ${username} Logged in`);
+                            res.sendFile(path.join(__dirname + '/index.html'));
+                        })
+                    }
+                } else {
+                    console.log(`Wrong Username or Password`);
+                }
+            })
+            console.log(`Wrong Username or Password`);
+        }
+    })
+});
 router.get("/register.html", function(req, res) {
     console.log("register page");
     res.sendFile(path.join(__dirname + '/register.html'));
 });
 router.get("/succ.html", function(req, res) {
     console.log("register successful");
-
+    res.sendFile(path.join(__dirname + '/succ.html'));
 });
-router.post("/succ.html", function(req, res) {
+router.post("/succ.html", function(req, res) { //Register form submit
     const user = req.body;
 
-    connection.query('SELECT email FROM User_info WHERE email = ?', user.email, (error, results, fields) => {
+    connection.query('SELECT Username FROM User_info WHERE Username = ?', user.Username, (error, results, fields) => {
         if (typeof results[0] !== 'undefined') {
-            if (results[0].email == user.email) {
-                console.log(`Email: ${user.email} is already registered`);
+            if (results[0].Username == user.Username) {
+                console.log(`User: ${user.Username} is already registered`);
                 res.sendFile(path.join(__dirname + '/register.html'));
             }
         } else {
@@ -165,13 +199,6 @@ router.get("/shop.html", function(req, res) {
 router.get("/aboutus.html", function(req, res) {
     console.log("about us page");
     res.sendFile(path.join(__dirname + '/aboutus.html'));
-});
-router.post("/form-post", function(req, res) {
-    const name = req.body.name;
-    const email = req.body.email;
-    const message = req.body.messages;
-    console.log("Form submitted by " + name);
-    res.send('Greeting <tag style="background-color: cornflowerblue;">' + name + '</tag> ' + 'The following message has been received: <tag style="background-color: orange;">' + message + '</tag>' + '.' + 'We will contact you via <tag style="background-color: darkseagreen;">' + email + '</tag>');
 });
 app.use((req, res, next) => { //PAGE NOT FOUND
     console.log("404: Invalid accessed");
