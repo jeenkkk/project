@@ -32,8 +32,8 @@ CREATE TABLE `Product_info` (
   `Product_Quantity` int(11) DEFAULT '1' NOT NULL,
   `Product_Description` varchar(256) NOT NULL,
   `Product_Image` varchar(256) NOT NULL,
-  `Product_Category` varchar(20) NOT NULL
-
+  `Product_Category` varchar(20) NOT NULL,
+	PRIMARY KEY (`Product_ID`)
 );
 
 insert into `Product_info` (`Product_ID`,`Product_Name`,`Product_Price`,`Product_Description`,`Product_Image`,`Product_Category`) values

@@ -36,8 +36,8 @@ connection.connect((err) => {
 });
 
 app.listen(3030, () => { console.log("Express server is running at port no: 3030") });
-
-app.get('/User_info', (req, res) => {
+/************************************************************ USER **********************************************************/
+app.get('/User_info', (req, res) => { //SELECTALL
     connection.query('SELECT * FROM User_info', (error, results, fields) => {
         if (!error) {
             res.send(results);
@@ -47,12 +47,12 @@ app.get('/User_info', (req, res) => {
 
     })
 });
-app.get('/User_info/:id', (req, res) => {
-    let id = req.params.id;
-    if (!id) {
-        return res.status(400).send({ error: true, message: 'Please provide student id.' });
+app.get('/User_info:Username', (req, res) => { //SELECT
+    let username = req.body.Username;
+    if (!username) {
+        return res.status(400).send({ error: true, message: 'Please provide username.' });
     }
-    connection.query('SELECT * FROM User_info WHERE id = ?', id, (error, results, fields) => {
+    connection.query('SELECT * FROM User_info WHERE Username = ?', username, (error, results, fields) => {
         if (!error) {
             res.send(results);
         } else {
@@ -61,16 +61,14 @@ app.get('/User_info/:id', (req, res) => {
 
     })
 });
-
-//delete
-app.delete('/personal_info/:id', (req, res) => {
-    let student_id = req.params.id;
-    if (!student_id) {
-        return res.status(400).send({ error: true, message: 'Please provide student id.' });
+app.delete('/User_info', (req, res) => { //DELETE
+    let username = req.body.Username;
+    if (!username) {
+        return res.status(400).send({ error: true, message: 'Please provide username.' });
     }
-    connection.query('DELETE FROM personal_info WHERE StudentID = ?', student_id, (error, results, fields) => {
+    connection.query('DELETE FROM User_info WHERE Username = ?', username, (error, results, fields) => {
         if (!error) {
-            res.send("User already deleted");
+            res.send("user deleted");
         } else {
             res.send(error);
         }
@@ -78,13 +76,14 @@ app.delete('/personal_info/:id', (req, res) => {
     })
 });
 
-//insert
-app.post('/personal_info', (req, res) => {
-    let Student = req.body;
-    let sql = "INSERT INTO personal_info (StudentID,Firstname,Lastname,DOB,Mobilephone) VALUES (?, ?, ?, ?, ?)"
-    connection.query(sql, [Student.StudentID, Student.Firstname, Student.Lastname, Student.DOB, Student.Mobilephone], (error, results, fields) => {
+app.post('/User_info', (req, res) => { //INSERT
+    let user = req.body.user_info;
+    if (!user) {
+        return res.status(400).send({ error: true, message: 'Please provide user information' })
+    }
+    connection.query("INSERT INTO User_info SET ?", user, (error, results, fields) => {
         if (!error) {
-            res.send("User already added");
+            return res.send({ error: false, data: results.affectedRows, message: 'User retrieved' });
         } else {
             res.send(error);
         }
@@ -92,19 +91,161 @@ app.post('/personal_info', (req, res) => {
     })
 });
 
-//update
-app.put('/personal_info', (req, res) => {
-    let Student = req.body;
-    let sql = "UPDATE personal_info SET Firstname = ?, Lastname = ?, DOB = ?, Mobilephone = ? WHERE StudentID = ?"
-    connection.query(sql, [Student.Firstname, Student.Lastname, Student.DOB, Student.Mobilephone, Student.StudentID], (error, results, fields) => {
+app.put('/User_info', (req, res) => { //UPDATE
+    let user = req.body.user_info;
+    let username = req.body.user_info.Username;
+    if (!user) {
+        return res.status(400).send({ error: true, message: 'Please provide user information' })
+    }
+    connection.query("UPDATE User_info SET ? WHERE Username = ?", [user, username], (error, results, fields) => {
         if (!error) {
-            res.send("User already updated");
+            return res.send({ error: false, data: results.affectedRows, message: 'User has been updated' });
         } else {
             res.send(error);
         }
+
+    })
+});
+/************************************************************ PRODUCT **********************************************************/
+
+app.get('/Product_info', (req, res) => { //SELECTALL
+    connection.query('SELECT * FROM Product_info', (error, results, fields) => {
+        if (!error) {
+            res.send(results);
+        } else {
+            res.send(error);
+        }
+
+    })
+});
+app.get('/Product_info:Product_ID', (req, res) => { //SELECT
+    let id = req.body.Product_ID;
+    if (!id) {
+        return res.status(400).send({ error: true, message: 'Please provide product id.' });
+    }
+    connection.query('SELECT * FROM Product_info WHERE Product_ID = ?', id, (error, results, fields) => {
+        if (!error) {
+            res.send(results);
+        } else {
+            res.send(error);
+        }
+
+    })
+});
+app.delete('/Product_info', (req, res) => { //DELETE
+    let id = req.body.Product_ID;
+    if (!id) {
+        return res.status(400).send({ error: true, message: 'Please provide product id.' });
+    }
+    connection.query('DELETE FROM Product_info WHERE Product_ID = ?', id, (error, results, fields) => {
+        if (!error) {
+            res.send("Product deleted");
+        } else {
+            res.send(error);
+        }
+
     })
 });
 
+app.post('/Product_info', (req, res) => { //INSERT
+    let product = req.body.Product_info;
+    if (!product) {
+        return res.status(400).send({ error: true, message: 'Please provide product information' })
+    }
+    connection.query("INSERT INTO Product_info SET ?", product, (error, results, fields) => {
+        if (!error) {
+            return res.send({ error: false, data: results.affectedRows, message: 'product retrieved' });
+        } else {
+            res.send(error);
+        }
+
+    })
+});
+
+app.put('/Product_info', (req, res) => { //UPDATE
+    let product = req.body.Product_info;
+    let id = req.body.Product_info.Product_ID;
+    if (!product) {
+        return res.status(400).send({ error: true, message: 'Please provide product information' })
+    }
+    connection.query("UPDATE Product_info SET ? WHERE Product_ID = ?", [product, id], (error, results, fields) => {
+        if (!error) {
+            return res.send({ error: false, data: results.affectedRows, message: 'Product has been updated' });
+        } else {
+            res.send(error);
+        }
+
+    })
+});
+/************************************************************ LOGIN **********************************************************/
+app.get('/Login_info', (req, res) => { //SELECTALL
+    connection.query('SELECT * FROM Login_info', (error, results, fields) => {
+        if (!error) {
+            res.send(results);
+        } else {
+            res.send(error);
+        }
+
+    })
+});
+app.get('/Login_info:username', (req, res) => { //SELECT
+    let username = req.body.Username;
+    if (!username) {
+        return res.status(400).send({ error: true, message: 'Please provide username.' });
+    }
+    connection.query('SELECT * FROM Login_info WHERE Username = ?', username, (error, results, fields) => {
+        if (!error) {
+            res.send(results);
+        } else {
+            res.send(error);
+        }
+
+    })
+});
+app.delete('/Login_info', (req, res) => { //DELETE
+    let username = req.body.Username;
+    if (!username) {
+        return res.status(400).send({ error: true, message: 'Please provide username.' });
+    }
+    connection.query('DELETE FROM Login_info WHERE Username = ?', username, (error, results, fields) => {
+        if (!error) {
+            res.send("user deleted");
+        } else {
+            res.send(error);
+        }
+
+    })
+});
+
+app.post('/Login_info', (req, res) => { //INSERT
+    let user = req.body.Username;
+    if (!user) {
+        return res.status(400).send({ error: true, message: 'Please provide user information' })
+    }
+    connection.query("INSERT INTO Login_info(Username,Login_log) VALUE (?,NOW())", user, (error, results, fields) => {
+        if (!error) {
+            return res.send({ error: false, data: results.affectedRows, message: 'User retrieved' });
+        } else {
+            res.send(error);
+        }
+
+    })
+});
+
+app.put('/Login_info', (req, res) => { //UPDATE
+    let username = req.body.Username;
+    if (!username) {
+        return res.status(400).send({ error: true, message: 'Please provide user information' })
+    }
+    connection.query("UPDATE Login_info SET Login_log=NOW() WHERE Username = ?", username, (error, results, fields) => {
+        if (!error) {
+            return res.send({ error: false, data: results.affectedRows, message: 'User has been updated' });
+        } else {
+            res.send(error);
+        }
+
+    })
+});
 /************************************************************ CRUD **********************************************************/
 console.log("Hello");
 const router = express.Router();
@@ -125,7 +266,7 @@ router.get("/login.html", function(req, res) {
     console.log("login page");
     res.sendFile(path.join(__dirname + '/login.html'));
 });
-router.post("/index.html", function(req, res) { //login form submit
+/*router.post("/index.html", function(req, res) { //login form submit
     const user = req.body;
     console.log(user);
     connection.query('SELECT Username,email,Password FROM User_info WHERE Username = ?', user.Username, (error, results, fields) => {
@@ -158,7 +299,7 @@ router.post("/index.html", function(req, res) { //login form submit
             console.log(`Wrong Username or Password`);
         }
     })
-});
+});*/
 router.get("/register.html", function(req, res) {
     console.log("register page");
     res.sendFile(path.join(__dirname + '/register.html'));
@@ -167,7 +308,7 @@ router.get("/succ.html", function(req, res) {
     console.log("register successful");
     res.sendFile(path.join(__dirname + '/succ.html'));
 });
-router.post("/succ.html", function(req, res) { //Register form submit
+/*router.post("/succ.html", function(req, res) { //Register form submit
     const user = req.body;
 
     connection.query('SELECT Username FROM User_info WHERE Username = ?', user.Username, (error, results, fields) => {
@@ -187,7 +328,7 @@ router.post("/succ.html", function(req, res) { //Register form submit
 
     })
 
-});
+});*/
 router.get("/search.html", function(req, res) {
     console.log("search page");
     res.sendFile(path.join(__dirname + '/search.html'));
