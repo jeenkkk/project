@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Shopflax</title>
-        <link href='https://fonts.googleapis.com/css?family=El Messiri' rel='stylesheet'> <!--logo font-->
-        <link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'> <!--home login nav font-->
-        <link href='https://fonts.googleapis.com/css?family=Cardo' rel='stylesheet'> <!--article-->
-        <link rel="icon" href="pic/favicon.png"> <!--favicon-->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/slide.css">
-        <link rel="stylesheet" href="css/index.css">
-    </head>
-    <body>
-        <header>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shopflax</title>
+    <link href='https://fonts.googleapis.com/css?family=El Messiri' rel='stylesheet'>
+    <!--logo font-->
+    <link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'>
+    <!--home login nav font-->
+    <link href='https://fonts.googleapis.com/css?family=Cardo' rel='stylesheet'>
+    <!--article-->
+    <link rel="icon" href="pic/favicon.png">
+    <!--favicon-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <header>
         <nav class="logo">
             <h1 style="color: #30475e;">&nbsp;
-                <img src="pic/logo.v4.png" alt="logo" width="60"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOP<font color="#cbaf87">FLAX</font>
-            <a href="login.html" style="float: right;"> LOGIN &nbsp;<img src="pic/login.png" alt="log" width="33"></a></h1>
+                <img src="pic/logo.v4.png" alt="logo" width="60"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOP
+                <font color="#cbaf87">FLAX</font>
+                <a href="login.html" style="float: right;"> LOGIN &nbsp;<img src="pic/login.png" alt="log" width="33"></a></h1>
         </nav>
         <nav class="navbar">
             <a class="active" href="index.html">HOME</a>
@@ -24,72 +30,79 @@
             <a href="search.html">SEARCH</a>
             <a href="aboutus.html">ABOUT US</a>
         </nav>
-        </header>
-        
-        <div id="slider">  
-            <div class="slide fade">
-              <img src="pic/productpic/highlight.jpeg" >
-            </div>
-            <div class="slide fade">
-                <img src="pic/productpic/highlight2.jpeg" >
-            </div>
-            <div class="slide fade">
-                <img src="pic/productpic/highlight3.jpg" >
-            </div>
-            <div class="slide fade">
-                <img src="pic/productpic/highlight4.jpg" >
-            </div>
-            
-            <!--arrows-->
-            <span class="controls" onclick="prevSlide(-1)" id="left-arrow">&#10094;<i class="fa fa-arrow-left" aria-hidden="true"></i>
+    </header>
+
+    <div id="slider">
+        <div class="slide fade">
+            <img src="pic/productpic/highlight.jpeg">
+        </div>
+        <div class="slide fade">
+            <img src="pic/productpic/highlight2.jpeg">
+        </div>
+        <div class="slide fade">
+            <img src="pic/productpic/highlight3.jpg">
+        </div>
+        <div class="slide fade">
+            <img src="pic/productpic/highlight4.jpg">
+        </div>
+
+        <!--arrows-->
+        <span class="controls" onclick="prevSlide(-1)" id="left-arrow">&#10094;<i class="fa fa-arrow-left" aria-hidden="true"></i>
           </span>
-            <span class="controls" id="right-arrow" onclick="nextSlide(1)">&#10095;<i class="fa fa-arrow-right" aria-hidden="true"></i>
+        <span class="controls" id="right-arrow" onclick="nextSlide(1)">&#10095;<i class="fa fa-arrow-right" aria-hidden="true"></i>
           </span>
-          </div>
-          <div class="quote">
-            Explore the latest pieces from the new collection and enjoy our complimentary delivery. <br> <strong>ShopFlex</strong>  brand name society -  New Collection, discover it on the l online store. 
-          </div>
-          <section class="bottompic">
-            <img src="pic/productpic/botpic1.jpg" alt="">
-            <img src="pic/productpic/botpic2.jpg" alt="">
-            <img src="pic/productpic/botpic3.jpg" alt="">
-          </section>
-          <div class="copyright">&nbsp;&nbsp;&nbsp;&nbsp;&#169; 2022 Shopflax</div>
-           <script>
-                var slides = document.querySelectorAll(".slide");
-                var index = 0;
-                function prevSlide(n){
-                  index+=n;
-                  changeSlide();
-                }
-                function nextSlide(n){
-                  index+=n;
-                  changeSlide();
-                }
-                changeSlide();
-                function changeSlide(){
-                  if(index>slides.length-1)
-                  index=0;
-                  if(index<0)
-                  index=slides.length-1;
-                  for(let i=0;i<slides.length;i++){
-                    slides[i].style.display = "none";  
-                  }
-                  slides[index].style.display = "block";
-                }
-                var myIndex = 0;
-                autoslide();
-                function autoslide() {
-                  var i;
-                  var x = document.getElementsByClassName("slide");
-                  for (i = 0; i < x.length; i++) {
-                    x[i].style.display = "none";  
-                  }
-                  myIndex++;
-                  if (myIndex > x.length) {myIndex = 1} // to reset img   
-                  x[myIndex-1].style.display = "block";  
-                  setTimeout(autoslide, 3000); // Change image every 3 seconds
-                }
-           </script>
-    </body>
+    </div>
+    <div class="quote">
+        Explore the latest pieces from the new collection and enjoy our complimentary delivery. <br> <strong>ShopFlex</strong> brand name society -  New Collection, discover it on the l online store.
+    </div>
+    <section class="bottompic">
+        <img src="pic/productpic/botpic1.jpg" alt="">
+        <img src="pic/productpic/botpic2.jpg" alt="">
+        <img src="pic/productpic/botpic3.jpg" alt="">
+    </section>
+    <div class="copyright">&nbsp;&nbsp;&nbsp;&nbsp;&#169; 2022 Shopflax</div>
+    <script>
+        var slides = document.querySelectorAll(".slide");
+        var index = 0;
+
+        function prevSlide(n) {
+            index += n;
+            changeSlide();
+        }
+
+        function nextSlide(n) {
+            index += n;
+            changeSlide();
+        }
+        changeSlide();
+
+        function changeSlide() {
+            if (index > slides.length - 1)
+                index = 0;
+            if (index < 0)
+                index = slides.length - 1;
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[index].style.display = "block";
+        }
+        var myIndex = 0;
+        autoslide();
+
+        function autoslide() {
+            var i;
+            var x = document.getElementsByClassName("slide");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {
+                myIndex = 1
+            } // to reset img   
+            x[myIndex - 1].style.display = "block";
+            setTimeout(autoslide, 3000); // Change image every 3 seconds
+        }
+    </script>
+</body>
+
 </html>

@@ -1,40 +1,54 @@
 class register {
-    constructor(form, fields) {
+    constructor(form) {
         this.form = form;
-        this.fields = fields;
-        this.createUser();
+        this.submit();
     }
 
     submit() {
         this.form.addEventListener("submit", (e) => {
             e.preventDefault();
-            console.log(this.fields);
+            this.register();
         })
     }
 
-    validate(fields) {
-        fetch("http://localhost:3030/User_info"), {
-                method: "GET",
+    register() {
+        var user = {
+            user_info: {
+                Firstname: document.getElementById('txtFname').value,
+                Lastname: document.getElementById('txtLname').value,
+                Username: document.getElementById('txtUser').value,
+                Password: document.getElementById('txtPwd').value,
+                email: document.getElementById('txtEmail').value,
+                role: "user",
+            }
+
+        };
+        fetch("http://localhost:3030/User_info", {
+                method: "POST",
                 headers: {
                     "content-type": "application/json",
                     "accept": "application/json"
                 },
-            }
-            .then((response) => response.json())
-            .then((response) => {
-                console.log(response);
+                body: JSON.stringify(user)
             })
-            .catch((err) => {
-                console.log(err);
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.code == 'ER_DUP_ENTRY') {
+                    window.alert('This username is already used');
+                } else {
+                    window.location.href = '/succ.html';
+                }
+            })
+            .catch((error) => {
+                console.log(error)
             });
+
 
     }
 }
 const form = document.querySelector(".login-form");
-if (form) {
-    const fields = ["txtFname", "txtLname", "txtUser", "txtEmail", "txtPwd"];
-    const newuser = new register(form, fields);
-}
+const newuser = new register(form);
+
 
 /*function registerr() {
     var data = {
