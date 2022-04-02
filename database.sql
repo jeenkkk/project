@@ -8,7 +8,7 @@ CREATE TABLE `User_info` (
   `Lastname` varchar(20) NOT NULL,
   `Username` varchar(20) NOT NULL,
   `Password` varchar(20) NOT NULL,
-  `email`	varchar(100) NOT NULL,
+  `email`	varchar(100) NOT NULL UNIQUE,
   `role` varchar(20) NOT NULL,
   PRIMARY KEY (`Username`)
 );
@@ -18,7 +18,7 @@ CREATE TABLE `Login_info` (
   `Username` varchar(20) NOT NULL,
   `Login_log` DATETIME,
   constraint fk_username foreign key (Username) references User_info(Username),
-  PRIMARY KEY (`Username`,`Login_log`)
+  PRIMARY KEY (`Username`)
 );
 insert into `User_info` (`Firstname`,`Lastname`,`Username`,`Password`,`email`,`role`) values
 ('kongkiet','kuchart','jeen','1234','dog@gmail.com','admin');
