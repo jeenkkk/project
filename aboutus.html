@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/aboutus.css">
         <link rel="stylesheet" href="css/style.css">
     </head>
-    <body>
+    <body onload="init();">
         <header>
         <nav class="logo">
             <h1 style="color: #30475e;">&nbsp;
@@ -96,6 +96,7 @@
                     <p>999 Phuttamonthon 4 Road,</p>
                     <p>Salaya, Nakhon Pathom</p>
                     <p>73170 THAILAND</p>
+                    
                 </div>
                 <div class="right">
                     <h1>OFFICE HOURS</h1>
@@ -103,6 +104,32 @@
                     <p>clientservice.shopflex@gmail.com</p>
                 </div>
             </div>
+            <br>
+            <div id="map"></div>
         </footer>
+        <script type="text/javascript" src="https://api.longdo.com/map/?key=38efaefa4d3a1c654a8b98a707a4b118"></script>
+        <script>
+            var marker = new longdo.Marker({lat:13.794630,
+                    lon:100.324568})
+            function init() {
+              var map = new longdo.Map({
+                placeholder: document.getElementById('map'),
+                zoom: 15,
+                lastView: false,
+                location:{
+                    lat:13.794630,
+                    lon:100.324568
+                }
+              });
+              map.Layers.setBase(longdo.Layers.GRAY);
+              map.Overlays.add(marker);
+            }
+          </script>
+        <style>
+            #map {
+                width: 100%;
+                height: 400px;
+            }
+        </style>
     </body>
 </html>

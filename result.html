@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=El Messiri' rel='stylesheet'>
+    <!--logo font-->
+    <link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'>
+    <!--home login nav font-->
+    <link href='https://fonts.googleapis.com/css?family=Cardo' rel='stylesheet'>
+    <link rel="stylesheet" href="css/product.css">
+    <!--article-->
+    <link rel="icon" href="pic/favicon.png" />
+    <!--favicon-->
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Shopflax</title>
+    <script>
+window.addEventListener('load', () => { // wait for the entire page to load
+    async function callService(url, method, sentData = {}) {
+        let data;
+        if (method == "search") {
+            let aMethod; // aMethod is a variable that stores the method of the request
+            if (method == "search") {
+                aMethod = "POST";
+            }
+            let response = await fetch(url, { //fetches data from the server
+                "method": aMethod,
+                "headers": {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                },
+                "body": JSON.stringify(sentData), //converts the data to JSON
+            });
+            data = await response.json();
+        }
+        return data;
+    }
+
+    // get all parameters from URL and convert them into JSON format
+    const params = (new URL(document.location)).searchParams;
+    const name = params.get(('name'));
+    const min = params.get(('min'));
+    const max = params.get(('max'));
+    const type = params.get(('type'));
+    console.log(name + " " + min + " " + max + " " + type);
+    let searcher = { // searcher is a variable that stores the data that will be sent to the server
+        search: {
+            "name": name,
+            "min": min,
+            "max": max,
+            "type": type
+        }
+    }
+    callService("http://localhost:3030/result", "search", searcher) // call the service
+        .then((data) => {
+            if (data.data.length > 0) {
+                console.log(data);
+                let output = "";
+                data.data.forEach((element) => { // for each element in the data array
+                    output += "<div class=\"column\"><div class=\"card\">";
+                    output += "<h3>" + element.Product_Name + "</h3>";
+                    output += "<a href=\"http://localhost:3030/product?id=" + element.Product_ID+"\">";
+                    output += "<img src=\""+ element.Product_Image+"\"" + "class=\"card-img-top\">"+"</a>";
+                    output += "<p>" + element.Product_Price + "฿</p>"+"</div>";
+                    output += "</div>";
+                    output += "</div>";
+                });
+                document.getElementById("content").innerHTML = output;
+            }
+            else{
+                document.getElementById("output").innerHTML = "<h4 style=\"text-align: center\">Result not found!</h4>";
+            }
+        });
+});
+    </script>
+</head>
+<header>
+    <nav class="logo">
+        <h1 style="color: #30475e;">&nbsp;
+            <img src="pic/logo.v4.png" alt="logo" width="60"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOP<font color="#cbaf87">FLAX</font>
+        <a href="login.html" style="float: right;"> LOGIN &nbsp;<img src="pic/login.png" alt="log" width="33"></a></h1>
+    </nav>
+    <nav class="navbar">
+        <a href="index.html">HOME</a>
+        <a href="shop.html">SHOP</a>
+        <a class="active" href="search.html">SEARCH</a>
+        <a href="aboutus.html">ABOUT US</a>
+    </nav>
+    </header>
+<body>
+    <div id="output">
+        <div class="row" id="content">
+
+        </div>
+    </div>
+</body>
+
+</html>

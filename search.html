@@ -1,50 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Shopflax</title>
-        <link href='https://fonts.googleapis.com/css?family=El Messiri' rel='stylesheet'> <!--logo font-->
-        <link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'> <!--home login nav font-->
-        <link href='https://fonts.googleapis.com/css?family=Cardo' rel='stylesheet'> <!--article-->
-        <link rel="icon" href="pic/favicon.png"> <!--favicon-->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/search.css">
-        <script type="text/javascript" src="js/search.js"></script>
-    </head>
-    <body style="background-color: #fffef8;">
-        <header>
-        
-        <nav class="logo">
-            <h1 style="color: #30475e;">&nbsp;
-                <img src="pic/logo.v4.png" alt="logo" width="60"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOP<font color="#cbaf87">FLAX</font>
-            <a href="login.html" style="float: right;"> LOGIN &nbsp;<img src="pic/login.png" alt="log" width="33"></a></h1>
-        </nav>
-        <nav class="navbar">
-            <a href="index.html">HOME</a>
-            <a href="shop.html">SHOP</a>
-            <a class="active" href="search.html">SEARCH</a>
-            <a href="aboutus.html">ABOUT US</a>
-        </nav>
-        </header>
-        <br>
-        <nav class="search">
-            Name : <input type="text" id="searchname" size="1000px" placeholder="Product name...">
-            <br>
-            <br>
-            Price : <input type="text" id="minprice" size="1000px" placeholder="Minimum price...">
-            <input type="text" id="maxprice" size="1000px" placeholder="Maximum price...">
-            <br>
-            <br>
-            Type : <select id="searchtype">
-                <option value="all">All</option>
-                <option value="perfume">Perfume</option>
-                <option value="lipstick">Lipstick</option>
-                <option value="watch">Watch</option>
-                <option value="shoe">Shoe</option>
-                <option value="bag">Bag</option>
-            </select>
-            <button type="submit" id="searching">Search</button>
-        </nav>
-        
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Shopflax</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=El Messiri"
+      rel="stylesheet"
+    />
+    <!--logo font-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Cormorant Garamond"
+      rel="stylesheet"
+    />
+    <!--home login nav font-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Cardo"
+      rel="stylesheet"
+    />
+    <!--article-->
+    <link rel="icon" href="pic/favicon.png" />
+    <!--favicon-->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/search.css" />
+  </head>
+  <body style="background-color: #fffef8">
+    <header>
+      <nav class="logo">
+        <h1 style="color: #30475e">
+          &nbsp;
+          <img src="pic/logo.v4.png" alt="logo" width="60" />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOP<font color="#cbaf87">FLAX</font>
+          <a href="login.html" style="float: right">
+            LOGIN &nbsp;<img src="pic/login.png" alt="log" width="33"
+          /></a>
+        </h1>
+      </nav>
+      <nav class="navbar">
+        <a href="index.html">HOME</a>
+        <a href="shop.html">SHOP</a>
+        <a class="active" href="search.html">SEARCH</a>
+        <a href="aboutus.html">ABOUT US</a>
+      </nav>
+    </header>
+    <br />
+    <section class="search">
+      <form class="col-md-4">
+        <div class="form-group">
+          <label for="txtName">Name</label>
+          <input type="text" name="name" id="name" />
+        </div>
+        <div class="form-group">
+          <label for="min">Minimum price</label>
+          <input type="text" name="min" id="min" />
+        </div>
+        <div class="form-group">
+          <label for="max">Maximum price</label>
+          <input type="text" name="max" id="max" />
+        </div>
+        <div class="form-group">
+          <label>Type</label>
+          <select name="type" id="type">
+            <option value=""></option>
+            <option value="Perfume">Perfume</option>
+            <option value="Lipstick">Lipstick</option>
+            <option value="Watch">Watch</option>
+            <option value="Shoe">Shoe</option>
+            <option value="Bag">Bag</option>
+          </select>
+        </div>
+        <br />
+
+        <div class="form-group">
+          <button type="submit" id="searching">search</button>
+          <button type="reset">Clear</button>
+        </div>
+      </form>
+    </section>
+  </body>
+  <script>
+    //Search, this one is used on search page (Search.html)
+    let searcher = document.querySelector("#searching");
+    let name = document.querySelector("#name");
+    let min = document.querySelector("#min");
+    let max = document.querySelector("#max");
+    let type = document.querySelector("#type");
+
+    // get all the criteria from the search page and sent it via url to fetch in the result page (Result.html)
+
+    searcher.addEventListener("click", function (e) { //when the search button is clicked
+      e.preventDefault();
+      location.replace( //replace the current url with the new url
+        "http://localhost:3030/result?" +
+          "name=" +
+          name.value +
+          "&min=" +
+          min.value +
+          "&max=" +
+          max.value +
+          "&type=" +
+          type.value
+      );
+    });
+  </script>
 </html>

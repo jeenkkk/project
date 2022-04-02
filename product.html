@@ -1,32 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Shopflax</title>
-        <link href='https://fonts.googleapis.com/css?family=El Messiri' rel='stylesheet'> <!--logo font-->
-        <link href='https://fonts.googleapis.com/css?family=Cormorant Garamond' rel='stylesheet'> <!--home login nav font-->
-        <link href='https://fonts.googleapis.com/css?family=Cardo' rel='stylesheet'> <!--article-->
-        <link rel="icon" href="pic/favicon.png"> <!--favicon-->
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/search.css">
-        <script type="text/javascript" src="js/search.js"></script>
-    </head>
-    <body style="background-color: #fffef8;">
-        <header>
-        
-        <nav class="logo">
-            <h1 style="color: #30475e;">&nbsp;
-                <img src="pic/logo.v4.png" alt="logo" width="60"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SHOP<font color="#cbaf87">FLAX</font>
-            <a href="login.html" style="float: right;"> LOGIN &nbsp;<img src="pic/login.png" alt="log" width="33"></a></h1>
-        </nav>
-        <nav class="navbar">
-            <a href="index.html">HOME</a>
-            <a href="shop.html">SHOP</a>
-            <a class="active" href="search.html">SEARCH</a>
-            <a href="aboutus.html">ABOUT US</a>
-        </nav>
-        </header>
-        
-        
-    </body>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #06273a;
+        font-family: "Cardo";
+      }
+      header {
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        font-size: x-large;
+      }
+      article {
+        margin: 50px 10% 50px 10%;
+        background-color: white;
+        padding: 50px;
+        display: flex;
+      }
+      .imgcontainer {
+        width: 55%;
+        position: relative;
+      }
+      .imgcontainer img {
+        width: 95%;
+        position: relative;
+      }
+
+      .img-list img {
+        width: 47%;
+      }
+
+      .Pinfo {
+        font-family: "Cardo";
+        width: 45%;
+        position: relative;
+        text-align: left;
+        line-height: 1.6;
+        color: rgb(133, 133, 133);
+        margin-top: 50px;
+        margin-left: 50px;
+      }
+      .Pinfo a {
+        color: rgb(133, 133, 133);
+        font-weight: 500;
+        text-decoration: none;
+      }
+
+      .Pinfo h2,
+      h4 {
+        font-family: "Cardo";
+        letter-spacing: 1px;
+        color: rgb(0, 0, 0);
+      }
+
+      .Pinfo .Pricetag {
+        font-family: "KoHo";
+        font-weight: 100;
+        color: rgb(0, 0, 0);
+      }
+      input[type="number"] {
+        font-family: "Cardo";
+        margin: 10px;
+        width: 50px;
+        padding: 8px 0px;
+        text-align: center;
+      }
+      select {
+        font-family: "Cardo";
+        text-transform: uppercase;
+        width: auto;
+        padding: 8px 0px;
+        text-align: left;
+      }
+
+      button {
+        font-family: "Cormorant Garamond";
+        letter-spacing: 2px;
+        margin: 10px;
+        padding: 10px 65px;
+        border-radius: 5px;
+        background-color: #cbaf87;
+        border: none;
+        font-weight: bold;
+      }
+
+      .addtobag button:hover {
+        background-color: #cbaf879d;
+      }
+    </style>
+    <title>Shopflax</title>
+    <script>
+      window.addEventListener("load", () => {
+        async function callService(url, method, sentData = {}) {
+          let data;
+          if (method == "select") {
+            let response = await fetch(url, { //fetching data from the server
+              method: "GET",
+            });
+            data = await response.json();
+          }
+          return data;
+        }
+
+        // get parameters from URL and convert to JSON
+        const params = new URL(document.location).searchParams;
+        const Product_ID = params.get("id");
+        //console.log(Product_ID);
+
+        callService(
+          "http://localhost:3030/product/" + Product_ID,
+          "select"
+        ).then((data) => {
+          //console.log(Product_ID);
+          let name = "<h4>" + data.data.Product_Name + "</h4>";
+          let img = '<img src="' + data.data.Product_Image + '">';
+          let price ="<h3>Price:"+ data.data.Product_Price + "฿</h3>";
+          let des = "Description: "+ data.data.Product_Description;
+          document.getElementById("outname").innerHTML += name;
+          document.getElementById("outimg").innerHTML += img;
+          document.getElementById("outprice").innerHTML = price;
+          document.getElementById("outdes").innerHTML = des;
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <article>
+      <div id="outname"></div>
+      <div class="imgcontainer" id="outimg"></div>
+      <div class="Pricetag" id="outprice"></div>
+      <div id="outcate"></div>
+      <div class="Pinfo" id="outdes"></div>
+      <div class="addtobag">
+        <input type="number" id="quantity" name="quantity" min="1" value="1">
+        <button type="submit">ADD&nbsp;TO&nbsp;CART</button><br><br>
+      </div>
+    </article>
+  </body>
 </html>
