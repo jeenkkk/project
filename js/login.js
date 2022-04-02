@@ -24,11 +24,14 @@ class login {
                 })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    console.log(data[0].role);
                     if (data.length > 0) {
                         if (data[0].Password.localeCompare(document.getElementById("txtPwd").value) == 0) {
                             var login_info = {
                                 Username: data[0].Username
+                            }
+                            if (data[0].role.localeCompare("admin") == 0) {
+                                window.alert("Welcome Admin!");
                             }
                             fetch("http://localhost:3030/Login_info", {
                                     method: "POST",
@@ -73,6 +76,9 @@ class login {
                         if (data[0].Password.localeCompare(document.getElementById("txtPwd").value) == 0) {
                             var login_info = {
                                 Username: data[0].Username
+                            }
+                            if (data[0].role.localeCompare("admin") == 0) {
+                                window.alert("Welcome Admin!");
                             }
                             fetch("http://localhost:3030/Login_info", {
                                     method: "POST",

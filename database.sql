@@ -21,7 +21,9 @@ CREATE TABLE `Login_info` (
   PRIMARY KEY (`Username`)
 );
 insert into `User_info` (`Firstname`,`Lastname`,`Username`,`Password`,`email`,`role`) values
-('kongkiet','kuchart','jeen','1234','dog@gmail.com','admin');
+('kongkiet','kuchart','jeen','1234','dog@gmail.com','admin'),
+('Tony','Stark','Ironman','Loveyou3000','tony@gmail.com','user');
+('Thor','Odinson','Ragnarok','Pointbreak2012','thor@gmail.com','user');
 
 
 DROP TABLE IF EXISTS `Product_info`;
