@@ -52,9 +52,12 @@ app.get('/User_info', (req, res) => { //SELECTALL
     })
 });
 // Testing Select a user by username
+// Case:1
 // method: GET
 // URL: http://localhost:3000/User_info/Username/jeen
-
+// Case:2
+// method: GET
+// URL: http://localhost:3000/User_info/Username/Ironman
 app.get('/User_info/Username/:Username', (req, res) => { //SELECT
     let username = req.params.Username;
     if (!username) {
@@ -70,9 +73,12 @@ app.get('/User_info/Username/:Username', (req, res) => { //SELECT
     })
 });
 // Testing Select a user by email
-// method: GET
-// URL: http://localhost:3000/User_info/email/dog@gmail.com
+// Case:1
 
+// URL: http://localhost:3000/User_info/email/dog@gmail.com
+// Case:2
+// method: GET
+// URL: http://localhost:3000/User_info/email/thor@gmail.com
 app.get('/User_info/email/:email', (req, res) => { //SELECT(EMAIL)
     let email = req.params.email;
     if (!email) {
@@ -89,9 +95,10 @@ app.get('/User_info/email/:email', (req, res) => { //SELECT(EMAIL)
 });
 
 // Testing insert a user
+// Case:1
 // method: POST
 // URL: http://localhost:3000/User_info
-// body: raw JSON
+// body1: raw JSON
 // {
 //   "user_info":{
 //      "Firstname": "Viphu",
@@ -99,6 +106,20 @@ app.get('/User_info/email/:email', (req, res) => { //SELECT(EMAIL)
 //      "Username": "MeenVP",
 //      "Password": "Shopflax123",
 //      "email": "cat@gmail.com",
+//      "role": "user"
+//    }
+// }
+// Case:2
+// method: POST
+// URL: http://localhost:3000/User_info
+// body: raw JSON
+// {
+//   "user_info":{
+//      "Firstname": "Peter",
+//      "Lastname": "Parker",
+//      "Username": "Spiderman",
+//      "Password": "Spiderverse358",
+//      "email": "Spidey@gmail.com",
 //      "role": "user"
 //    }
 // }
@@ -117,6 +138,7 @@ app.post('/User_info', (req, res) => { //INSERT
     })
 });
 // Testing update a user
+// Case:1
 // method: PUT
 // URL: http://localhost:3000/User_info
 // body: raw JSON
@@ -127,6 +149,20 @@ app.post('/User_info', (req, res) => { //INSERT
 //      "Username": "MeenVP",
 //      "Password": "Shopflax123",
 //      "email": "dolphin@gmail.com",
+//      "role": "user"
+//    }
+// }
+// Case:2
+// method: PUT
+// URL: http://localhost:3000/User_info
+// body: raw JSON
+// {
+//   "user_info":{
+//      "Firstname": "Peter",
+//      "Lastname": "Parker",
+//      "Username": "Spiderman",
+//      "Password": "Spiderpig3811",
+//      "email": "Spidey@gmail.com",
 //      "role": "user"
 //    }
 // }
@@ -148,9 +184,15 @@ app.put('/User_info', (req, res) => { //UPDATE
 // Testing delete a user
 // method: DELETE
 // URL: http://localhost:3000/User_info
+// Case:1
 // body: raw JSON
 // {
-//   "Username": "jeen"
+//   "Username": "Meen"
+// }
+// Case:2
+// body: raw JSON
+// {
+//   "Username": "Spiderman"
 // }
 
 app.delete('/User_info', (req, res) => { //DELETE
@@ -183,7 +225,10 @@ app.get('/Product_info', (req, res) => { //SELECTALL
 });
 // Testing Select a product
 // method: GET
+// Case:1
 // URL: http://localhost:3000/Product_info/2
+// Case:2
+// URL: http://localhost:3000/Product_info/4
 app.get('/Product_info/:Product_ID', (req, res) => { //SELECT
     let id = req.params.Product_ID;
     if (!id) {
@@ -199,6 +244,7 @@ app.get('/Product_info/:Product_ID', (req, res) => { //SELECT
     })
 });
 // Testing insert a product
+// Case:1
 // method: POST
 // URL: http://localhost:3000/Product_info
 // body: raw JSON
@@ -209,6 +255,21 @@ app.get('/Product_info/:Product_ID', (req, res) => { //SELECT
 //      "Product_Price": 7500,
 //      "Product_Quantity": 3,
 //      "Product_Description": "It's a catwatch.",
+//      "Product_Image": "https://www.chanel.com/images//t_one//w_0.51,h_0.51,c_crop/q_auto:good,f_auto,fl_lossy,dpr_1.2/w_1240/coco-mademoiselle-eau-de-parfum-intense-spray-3-4fl-oz--packshot-default-116660-8848376889374.jpg",
+//      "Product_Category": "Watch"
+//    }
+// }
+// Case:2
+// method: POST
+// URL: http://localhost:3000/Product_info
+// body: raw JSON
+// {
+//   "Product_info":{
+//      "Product_ID": 6,
+//      "Product_Name": "Panther bag",
+//      "Product_Price": 16900,
+//      "Product_Quantity": 7,
+//      "Product_Description": "Made in Wakanda.",
 //      "Product_Image": "https://www.chanel.com/images//t_one//w_0.51,h_0.51,c_crop/q_auto:good,f_auto,fl_lossy,dpr_1.2/w_1240/coco-mademoiselle-eau-de-parfum-intense-spray-3-4fl-oz--packshot-default-116660-8848376889374.jpg",
 //      "Product_Category": "Watch"
 //    }
@@ -228,6 +289,7 @@ app.post('/Product_info', (req, res) => { //INSERT
     })
 });
 // Testing update a product
+// Case:1
 // method: PUT
 // URL: http://localhost:3000/Product_info
 // body: raw JSON
@@ -240,6 +302,21 @@ app.post('/Product_info', (req, res) => { //INSERT
 //      "Product_Description": "It's not a catwatch.",
 //      "Product_Image": "https://www.chanel.com/images//t_one//w_0.51,h_0.51,c_crop/q_auto:good,f_auto,fl_lossy,dpr_1.2/w_1240/coco-mademoiselle-eau-de-parfum-intense-spray-3-4fl-oz--packshot-default-116660-8848376889374.jpg",
 //      "Product_Category": "Watch"
+//    }
+// }
+// Case:2
+// method: POST
+// URL: http://localhost:3000/Product_info
+// body: raw JSON
+// {
+//   "Product_info":{
+//      "Product_ID": 7,
+//      "Product_Name": "Panther bag",
+//      "Product_Price": 16900,
+//      "Product_Quantity": 7,
+//      "Product_Description": "Made in Wakanda.",
+//      "Product_Image": "https://www.chanel.com/images//t_one//w_0.51,h_0.51,c_crop/q_auto:good,f_auto,fl_lossy,dpr_1.2/w_1240/coco-mademoiselle-eau-de-parfum-intense-spray-3-4fl-oz--packshot-default-116660-8848376889374.jpg",
+//      "Product_Category": "Handbag"
 //    }
 // }
 app.put('/Product_info', (req, res) => { //UPDATE
@@ -258,11 +335,19 @@ app.put('/Product_info', (req, res) => { //UPDATE
     })
 });
 // Testing delete a user
+// Case:1
 // method: DELETE
 // URL: http://localhost:3000/Product_info
 // body: raw JSON
 // {
 //   "Product_ID": "6"
+// }
+// Case:2
+// method: DELETE
+// URL: http://localhost:3000/Product_info
+// body: raw JSON
+// {
+//   "Product_ID": "7"
 // }
 
 app.delete('/Product_info', (req, res) => { //DELETE

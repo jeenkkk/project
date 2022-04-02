@@ -48,32 +48,3 @@ class register {
 }
 const form = document.querySelector(".login-form");
 const newuser = new register(form);
-
-
-/*function registerr() {
-    var data = {
-        Firstname: document.getElementById('txtFname').value,
-        Lastname: document.getElementById('txtLname').value,
-        Username: document.getElementById('txtUser').value,
-        email: document.getElementById('txtEmail').value,
-        Password: document.getElementById('txtpwd').value
-    };
-    fetch("http://localhost:3030/user-register", {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                "content-type": "application/json",
-            },
-
-        })
-        .then((response) => reponse.json())
-        .then((data) => {
-            console.log(data);
-        })
-        .catch((error) => {
-            console.error("Error:", error.message);
-        })
-
-
-
-}*/
