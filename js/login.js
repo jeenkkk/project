@@ -24,7 +24,6 @@ class login {
                 })
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data[0].role);
                     if (data.length > 0) {
                         if (data[0].Password.localeCompare(document.getElementById("txtPwd").value) == 0) {
                             var login_info = {
